@@ -1,67 +1,46 @@
 package Application;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
-import entities.CPF;
+import services.filtragemCompleta;
 import services.verificadorCPF;
 
 public class App {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        verificadorCPF verificador = new verificadorCPF();
+
+        System.out.print("Informe o caminho do arquivo: ");
+        String caminho = sc.nextLine();
 
 
-       try {
+       try (BufferedReader br = new BufferedReader(new FileReader(caminho))){
 
-        List<String> listaCodigos = new ArrayList<>();
+        Set<String> set = new HashSet<>();
         String codigoString;
-        Integer repetir;
         do {
-            sc.nextLine();
-            System.out.print("Informe o cpf: ");
-            codigoString = sc.nextLine();
-            listaCodigos.add(codigoString);
+   
+            codigoString = br.readLine();
 
-            sc.nextLine();
-
-            System.out.print("Informar outro valor? (1/0)");
-            repetir = sc.nextInt();
-
-           
-        } while (repetir == 1);
-
-
-        List<CPF> listaCPFValidos = new ArrayList<>();
-        List<CPF> listaCPFInvalidos = new ArrayList<>();
-        
-        for (String codigos : listaCodigos) {
-
-            if(verificador.verificadorDeTamanho(codigos)){
-                listaCPFValidos.add(new CPF(codigos));
-            }
-
-            else{
-                listaCPFInvalidos.add(new CPF(codigos));
+            if(codigoString != null){
+                set.add(codigoString);
             }
             
-        }
 
-        System.out.println("CPFs Validos: ");
+           
+        } while (codigoString != null);
 
-        for (CPF cpf : listaCPFValidos) {
-            System.out.println(cpf);
-        }
+        br.close();
 
-        System.err.println("CPFs Invalidos: ");
 
-        for (CPF cpf : listaCPFInvalidos) {
-            System.out.println(cpf);
-        }
+        filtragemCompleta fc = new filtragemCompleta(new verificadorCPF(), set);
+        fc.imprimirListas();
         
        } catch (Exception e) {
-        // TODO: handle exception
+        System.out.println("Erro: " + e.getMessage());
        }
        finally{
         sc.close();
