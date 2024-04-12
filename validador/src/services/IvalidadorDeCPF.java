@@ -10,4 +10,5 @@ public interface IvalidadorDeCPF {
     public Boolean verificadorDeLetras(String codigo);
     public void imprimirCPFValidos(List<CPF> listaCPFs);
     public void imprimirCPFInvalidos(List<CPF> listaCPFs);
+    public Boolean verificadorMatematico(String codigo);
 }

@@ -34,14 +34,22 @@ public class filtragemCompleta {
             String codigosSemCaracteres = metodoDeValidacao.removedorDeCaracteresEspeciais(codigos);
             
             if(metodoDeValidacao.verificadorDeTamanho(codigosSemCaracteres) && metodoDeValidacao.verificadorDeLetras(codigosSemCaracteres)){
-                listaCPFValidos.add(new CPF(codigos));
+                if(metodoDeValidacao.verificadorMatematico(codigosSemCaracteres)){
+                    listaCPFValidos.add(new CPF(codigos));
+                }
+
+                else{
+                    listaCPFInvalidos.add(new CPF(codigos));
+                }
+                
             }
 
             else{
                 listaCPFInvalidos.add(new CPF(codigos));
             }
-            
         }
+
+        
     }
 
     public void imprimirListas(){

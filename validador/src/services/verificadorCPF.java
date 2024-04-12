@@ -54,6 +54,71 @@ public class verificadorCPF implements IvalidadorDeCPF{
             System.out.println(cpf.toString());
         }
     }
+
+    @Override
+    public Boolean verificadorMatematico(String codigo) {
+        Double soma = 0.0;
+
+        Boolean primeiroVerificador = false, segundoVerificador = false;
+
+            for (int i = 0; i < 9; i++) {
+                Integer numeralDoCodigo = codigo.charAt(i) - '0';
+                System.out.println(numeralDoCodigo);
+
+                soma += numeralDoCodigo * (10 - i);
+            }
+        System.out.println(soma);
+
+        Double restoDaDivisao = (soma * 10) % 11;
+
+        if(restoDaDivisao == 10.0){
+            restoDaDivisao = 0.0;
+        }
+
+        if(restoDaDivisao == codigo.charAt(9) - '0'){
+            primeiroVerificador = true;
+        }
+
+
+
+        soma = 0.0;
+
+        for (int i = 0; i < 10; i++) {
+            Integer numeralDoCodigo = codigo.charAt(i) - '0';
+            System.out.println(numeralDoCodigo);
+            soma += numeralDoCodigo * (11 - i);
+            
+        }
+
+        System.out.println(soma);
+
+        restoDaDivisao = 0.0;
+
+        restoDaDivisao = (soma * 10) % 11;
+
+        if(restoDaDivisao == 10.0){
+            restoDaDivisao = 0.0;
+        }
+
+        if(restoDaDivisao == codigo.charAt(10) - '0'){
+            segundoVerificador = true;
+        }
+
+        //if((soma * 10) % 11 == (codigo.charAt(10) - 'O')){
+       //     segundoVerificador = true;
+        //}
+
+        if(primeiroVerificador && segundoVerificador){
+            return true;
+        }
+        
+        else{
+            return false;
+        }
+
+            
+        
+    }
     
 }
 
