@@ -32,7 +32,7 @@ public class filtragemCompleta {
 
             String codigosSemCaracteres = metodoDeValidacao.removedorDeCaracteresEspeciais(codigos);
             
-            if(metodoDeValidacao.verificadorDeTamanho(codigosSemCaracteres) && metodoDeValidacao.verificadorDeLetras(codigosSemCaracteres)){
+            if(metodoDeValidacao.verificadorDeTamanho(codigosSemCaracteres) && metodoDeValidacao.verificadorDeLetras(codigosSemCaracteres) && metodoDeValidacao.verificaPontos(codigos)){
                 if(metodoDeValidacao.verificadorMatematico(codigosSemCaracteres) && metodoDeValidacao.verificadorBlacklist(codigosSemCaracteres)){
                     listaCPFValidos.add(new CPF(codigos));
                 }
@@ -47,7 +47,7 @@ public class filtragemCompleta {
                 listaCPFInvalidos.add(new CPF(codigos));
             }
         }
-
+        codigosSemVerificacao.clear();
         
     }
 

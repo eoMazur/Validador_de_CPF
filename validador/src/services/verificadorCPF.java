@@ -150,6 +150,21 @@ public class verificadorCPF implements IvalidadorDeCPF{
 
         
     }
+
+    @Override
+    public Boolean verificaPontos(String codigo) {
+        if(codigo.charAt(3) == '.' && codigo.charAt(7) == '.' && codigo.charAt(11) == '-'){
+            return true;
+        }
+
+        if((codigo.charAt(3) > '0' && codigo.charAt(3) < '9') && 
+        (codigo.charAt(6) > '0' && codigo.charAt(7) < '9') &&
+        (codigo.charAt(9) > '0' && codigo.charAt(9) < '9')){
+            return true;
+        }
+
+        return false;
+    }
     
 }
 

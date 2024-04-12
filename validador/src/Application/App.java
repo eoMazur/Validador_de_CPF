@@ -37,6 +37,8 @@ public class App {
 
 
         filtragemCompleta fc = new filtragemCompleta(new verificadorCPF(), set);
+        set.clear();
+        
         fc.imprimirListas();
         
        } catch (Exception e) {
