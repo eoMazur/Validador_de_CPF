@@ -88,7 +88,6 @@ public class verificadorCPF implements IvalidadorDeCPF{
         }
 
 
-
         restoDaDivisao = 0.0;
 
         restoDaDivisao = (soma * 10) % 11;

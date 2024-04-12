@@ -47,6 +47,8 @@ public class filtragemCompleta {
                 listaCPFInvalidos.add(new CPF(codigos));
             }
         }
+
+        
     }
 
     public void imprimirListas(){
