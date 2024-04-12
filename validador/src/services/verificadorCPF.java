@@ -18,7 +18,7 @@ public class verificadorCPF implements IvalidadorDeCPF{
 
     @Override
     public String removedorDeCaracteresEspeciais(String codigo) {
-        codigo.replaceAll("[^a-zA-Z0-9]", "");
+        codigo = codigo.replaceAll("[^a-zA-Z0-9]", "");
 
         return codigo;
     }

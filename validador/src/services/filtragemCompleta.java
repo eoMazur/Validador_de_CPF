@@ -21,22 +21,17 @@ public class filtragemCompleta {
         listaCPFInvalidos = new ArrayList<>();
         listaCPFValidos = new ArrayList<>();
 
+        
         rodarMetodos();
     }
 
     public void rodarMetodos(){
 
-       // metodoDeValidacao.verificadorDeTamanho();
-        //metodoDeValidacao.verificadorDeCaracteresEspeciais();
-        //metodoDeValidacao.verificadorDeLetras();
-
 
         for (String codigos : codigosSemVerificacao) {
             codigos = codigos.trim();
 
-            //String codigosSemCaracteres = metodoDeValidacao.removedorDeCaracteresEspeciais(codigos);
-            String codigosSemCaracteres = codigos.replaceAll("[^a-zA-Z0-9]", "");
-            //letrasNoCpf = metodoDeValidacao.verificadorDeLetras(codigosSemCaracteres);
+            String codigosSemCaracteres = metodoDeValidacao.removedorDeCaracteresEspeciais(codigos);
             
             if(metodoDeValidacao.verificadorDeTamanho(codigosSemCaracteres) && metodoDeValidacao.verificadorDeLetras(codigosSemCaracteres)){
                 listaCPFValidos.add(new CPF(codigos));
