@@ -27,14 +27,13 @@ public class filtragemCompleta {
 
     public void rodarMetodos(){
 
-
         for (String codigos : codigosSemVerificacao) {
             codigos = codigos.trim();
 
             String codigosSemCaracteres = metodoDeValidacao.removedorDeCaracteresEspeciais(codigos);
             
             if(metodoDeValidacao.verificadorDeTamanho(codigosSemCaracteres) && metodoDeValidacao.verificadorDeLetras(codigosSemCaracteres)){
-                if(metodoDeValidacao.verificadorMatematico(codigosSemCaracteres)){
+                if(metodoDeValidacao.verificadorMatematico(codigosSemCaracteres) && metodoDeValidacao.verificadorBlacklist(codigosSemCaracteres)){
                     listaCPFValidos.add(new CPF(codigos));
                 }
 
@@ -48,8 +47,6 @@ public class filtragemCompleta {
                 listaCPFInvalidos.add(new CPF(codigos));
             }
         }
-
-        
     }
 
     public void imprimirListas(){

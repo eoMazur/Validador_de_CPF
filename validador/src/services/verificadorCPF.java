@@ -113,6 +113,44 @@ public class verificadorCPF implements IvalidadorDeCPF{
             
         
     }
+
+    @Override
+    public Boolean verificadorBlacklist(String codigo) {
+        try {
+            String linha;
+
+            String[] blacklist =
+             {"11111111111",
+            "22222222222",
+            "33333333333",
+            "44444444444",
+            "55555555555",
+            "66666666666",
+            "77777777777",
+            "88888888888",
+            "99999999999",
+            "00000000000"};
+
+                
+                for (int i = 0; i < blacklist.length; i++) {
+                    linha = blacklist[i];
+                    if(linha != null){
+                        if(linha.equals(codigo)){
+                            return false;
+                        }
+                    }
+                }
+
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+
+            throw new NullPointerException();
+        }
+
+        
+    }
     
 }
 
