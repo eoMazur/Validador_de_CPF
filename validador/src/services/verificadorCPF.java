@@ -1,8 +1,5 @@
 package services;
 
-import java.util.List;
-
-import entities.CPF;
 
 public class verificadorCPF implements IvalidadorDeCPF{
 
@@ -36,23 +33,6 @@ public class verificadorCPF implements IvalidadorDeCPF{
             }
         }
         return letrasNoCpf;
-    }
-
-    @Override
-    public void imprimirCPFValidos(List<CPF> listaCPFs) {
-        System.out.println("CPFs validos: ");
-        for (CPF cpf : listaCPFs) {
-            System.out.println(cpf.toString());
-        }
-    }
-
-    @Override
-    public void imprimirCPFInvalidos(List<CPF> listaCPFs) {
-        System.out.println("CPFs invalidos: ");
-
-        for (CPF cpf : listaCPFs) {
-            System.out.println(cpf.toString());
-        }
     }
 
     @Override
