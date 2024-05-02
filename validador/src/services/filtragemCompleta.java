@@ -6,14 +6,14 @@ import java.util.Set;
 
 import entities.CPF;
 
-public class filtragemCompleta {
+public class FiltragemCompleta {
     private Set<String> codigosSemVerificacao;
     private List<CPF> listaCPFValidos;
     private List<CPF> listaCPFInvalidos;
     private IvalidadorDeCPF metodoDeValidacao;
 
 
-    public filtragemCompleta(IvalidadorDeCPF metodoDeValidacao, Set<String> set) {
+    public FiltragemCompleta(IvalidadorDeCPF metodoDeValidacao, Set<String> set) {
 
         this.metodoDeValidacao = metodoDeValidacao;
         this.codigosSemVerificacao = set;
@@ -22,7 +22,7 @@ public class filtragemCompleta {
         listaCPFValidos = new ArrayList<>();
 
         
-        rodarMetodos();
+        
     }
 
     public void rodarMetodos(){

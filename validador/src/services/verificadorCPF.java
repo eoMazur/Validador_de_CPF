@@ -1,16 +1,14 @@
 package services;
 
 
-public class verificadorCPF implements IvalidadorDeCPF{
+public class VerificadorCPF implements IvalidadorDeCPF{
 
     @Override
     public Boolean verificadorDeTamanho(String codigo){
         if(codigo.length() == 11){
             return true;
         }
-        else
-            return false;
-        
+        return false;     
     }
 
     @Override
@@ -22,17 +20,12 @@ public class verificadorCPF implements IvalidadorDeCPF{
 
     @Override
     public Boolean verificadorDeLetras(String codigo) {
-        Boolean letrasNoCpf = false;
         for(int i = 0; i < codigo.length(); i++){
             if(codigo.charAt(i) > '9'){
-                letrasNoCpf = false;
-                break;
-            }
-            else{
-                letrasNoCpf = true;
+                return false;
             }
         }
-        return letrasNoCpf;
+        return true;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package Application;
+package application;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,8 +6,8 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-import services.filtragemCompleta;
-import services.verificadorCPF;
+import services.FiltragemCompleta;
+import services.VerificadorCPF;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -15,6 +15,8 @@ public class App {
 
         System.out.print("Informe o caminho do arquivo para a leitura dos dados: ");
         String caminho = sc.nextLine();
+
+        sc.close();
 
 
        try (BufferedReader br = new BufferedReader(new FileReader(caminho))){
@@ -36,18 +38,16 @@ public class App {
         br.close();
 
 
-        filtragemCompleta fc = new filtragemCompleta(new verificadorCPF(), set);
+        FiltragemCompleta fc = new FiltragemCompleta(new VerificadorCPF(), set);
+
+        fc.rodarMetodos();
         set.clear();
-        
+
         fc.imprimirListas();
         
-       } catch (Exception e) {
-        System.out.println("Erro: " + e.getMessage());
        }
-       finally{
-        sc.close();
+        catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
        }
-
-
     }
 }
