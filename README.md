@@ -1,5 +1,7 @@
 # Desenvolvido com parceria mutua de Joao Pedro Golenia, GitHub: joaolenia.
 
+Este projeto foi desenvolvido como um desafio do programa de bolsas da empresa de desenvolvimento Compass OUL.
+
 # Validador de CPF em Java
 
 Este repositório contém um programa simples em Java para verificar a validade de números de CPF (Cadastro de Pessoas Físicas). O CPF é um documento de identificação fiscal brasileiro.
