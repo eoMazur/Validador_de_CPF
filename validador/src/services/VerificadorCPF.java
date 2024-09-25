@@ -1,7 +1,7 @@
 package services;
 
 
-public class VerificadorCPF implements IvalidadorDeCPF{
+public final class VerificadorCPF implements IvalidadorDeCPF{
 
     @Override
     public Boolean verificadorDeTamanho(String codigo){

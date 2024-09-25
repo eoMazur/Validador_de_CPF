@@ -6,11 +6,11 @@ import java.util.Set;
 
 import entities.CPF;
 
-public class FiltragemCompleta {
-    private Set<String> codigosSemVerificacao;
-    private List<CPF> listaCPFValidos;
-    private List<CPF> listaCPFInvalidos;
-    private IvalidadorDeCPF metodoDeValidacao;
+public final class FiltragemCompleta {
+    private final Set<String> codigosSemVerificacao;
+    private final List<CPF> listaCPFValidos;
+    private final List<CPF> listaCPFInvalidos;
+    private final IvalidadorDeCPF metodoDeValidacao;
 
 
     public FiltragemCompleta(IvalidadorDeCPF metodoDeValidacao, Set<String> set) {
