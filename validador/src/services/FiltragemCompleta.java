@@ -14,15 +14,11 @@ public class FiltragemCompleta {
 
 
     public FiltragemCompleta(IvalidadorDeCPF metodoDeValidacao, Set<String> set) {
-
         this.metodoDeValidacao = metodoDeValidacao;
         this.codigosSemVerificacao = set;
 
         listaCPFInvalidos = new ArrayList<>();
         listaCPFValidos = new ArrayList<>();
-
-        
-        
     }
 
     public void rodarMetodos(){
@@ -40,15 +36,12 @@ public class FiltragemCompleta {
                 else{
                     listaCPFInvalidos.add(new CPF(codigos));
                 }
-                
             }
-
             else{
                 listaCPFInvalidos.add(new CPF(codigos));
             }
         }
         codigosSemVerificacao.clear();
-        
     }
 
     public void imprimirListas(){
@@ -60,20 +53,18 @@ public class FiltragemCompleta {
         System.out.println("CPFs validos: ");
         for (CPF cpf : listaCPFValidos) {
             System.out.println(cpf.toString() + " " + encontraRegiao(cpf));
-
         }
     }
 
     public void imprimirCPFInvalidos() {
         System.out.println("CPFs invalidos: ");
-
         for (CPF cpf : listaCPFInvalidos) {
             System.out.println(cpf.toString());
         }
     }
 
     public String encontraRegiao(CPF cpf){
-        Integer indexPadrao = 8;
+        int indexPadrao = 8;
         if(cpf.getCpf().charAt(3) == '.' && cpf.getCpf().charAt(7) == '.' && cpf.getCpf().charAt(11) == '-'){
             indexPadrao = 10;
         }
@@ -117,12 +108,7 @@ public class FiltragemCompleta {
             else if(cpf.getCpf().charAt(indexPadrao) == '0'){
                 return "RS";
             }
-        
 
         return "Região não encontrada.";
-
     }
-
-
-
 }

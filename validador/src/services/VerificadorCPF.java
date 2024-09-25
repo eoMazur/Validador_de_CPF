@@ -5,10 +5,7 @@ public class VerificadorCPF implements IvalidadorDeCPF{
 
     @Override
     public Boolean verificadorDeTamanho(String codigo){
-        if(codigo.length() == 11){
-            return true;
-        }
-        return false;     
+        return codigo.length() == 11;
     }
 
     @Override
@@ -30,60 +27,34 @@ public class VerificadorCPF implements IvalidadorDeCPF{
 
     @Override
     public Boolean verificadorMatematico(String codigo) {
-        Double soma = 0.0;
+        double somaDigito1 = 0.0;
+        double somaDigito2 = 0.0;
 
-        Boolean primeiroVerificador = false, segundoVerificador = false;
-
-            for (int i = 0; i < 9; i++) {
-                Integer numeralDoCodigo = codigo.charAt(i) - '0';
-                soma += numeralDoCodigo * (10 - i);
-            }
-
-
-        Double restoDaDivisao = (soma * 10) % 11;
-
-        if(restoDaDivisao == 10.0){
-            restoDaDivisao = 0.0;
-        }
-
-        if(restoDaDivisao == codigo.charAt(9) - '0'){
-            primeiroVerificador = true;
-        }
-
-
-
-        soma = 0.0;
+        boolean verificador = false;
 
         for (int i = 0; i < 10; i++) {
-            Integer numeralDoCodigo = codigo.charAt(i) - '0';
-            soma += numeralDoCodigo * (11 - i);
-            
+            if(i != 9){
+                int numeralDoCodigo = codigo.charAt(i) - '0';
+                somaDigito1 += numeralDoCodigo * (10 - i);
+            }
+
+            int numeralDoCodigo = codigo.charAt(i) - '0';
+            somaDigito2 += numeralDoCodigo * (11 - i);
         }
 
+        somaDigito1 = (somaDigito1 * 10) % 11;
+        somaDigito2 = (somaDigito2 * 10) % 11;
 
-        restoDaDivisao = 0.0;
-
-        restoDaDivisao = (soma * 10) % 11;
-
-        if(restoDaDivisao == 10.0){
-            restoDaDivisao = 0.0;
+        if(somaDigito1 == 10.0 && somaDigito2 == 10.0){
+            somaDigito1 = 0.0;
+            somaDigito2 = 0.0;
         }
 
-        if(restoDaDivisao == codigo.charAt(10) - '0'){
-            segundoVerificador = true;
+        if(somaDigito1 == codigo.charAt(9) - '0' && somaDigito2 == codigo.charAt(10) - '0'){
+            verificador = true;
         }
 
-
-        if(primeiroVerificador && segundoVerificador){
-            return true;
-        }
-        
-        else{
-            return false;
-        }
-
-            
-        
+        return verificador;
     }
 
     @Override
@@ -103,15 +74,13 @@ public class VerificadorCPF implements IvalidadorDeCPF{
             "99999999999",
             "00000000000"};
 
-                
-                for (int i = 0; i < blacklist.length; i++) {
-                    linha = blacklist[i];
-                    if(linha != null){
-                        if(linha.equals(codigo)){
-                            return false;
-                        }
-                    }
+
+            for (String s : blacklist) {
+                linha = s;
+                if (linha.equals(codigo)) {
+                    return false;
                 }
+            }
 
             return true;
 
@@ -130,13 +99,9 @@ public class VerificadorCPF implements IvalidadorDeCPF{
             return true;
         }
 
-        if((codigo.charAt(3) > '0' && codigo.charAt(3) < '9') && 
-        (codigo.charAt(6) > '0' && codigo.charAt(7) < '9') &&
-        (codigo.charAt(9) > '0' && codigo.charAt(9) < '9')){
-            return true;
-        }
-
-        return false;
+        return (codigo.charAt(3) > '0' && codigo.charAt(3) < '9') &&
+                (codigo.charAt(6) > '0' && codigo.charAt(7) < '9') &&
+                (codigo.charAt(9) > '0' && codigo.charAt(9) < '9');
     }
     
 }
