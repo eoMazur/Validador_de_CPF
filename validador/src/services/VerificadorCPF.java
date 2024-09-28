@@ -10,9 +10,7 @@ public final class VerificadorCPF implements IvalidadorDeCPF{
 
     @Override
     public String removedorDeCaracteresEspeciais(String codigo) {
-        codigo = codigo.replaceAll("[^a-zA-Z0-9]", "");
-
-        return codigo;
+        return codigo.replaceAll("[^a-zA-Z0-9]", "");
     }
 
     @Override
@@ -33,7 +31,7 @@ public final class VerificadorCPF implements IvalidadorDeCPF{
         boolean verificador = false;
 
         for (int i = 0; i < 10; i++) {
-            if(i != 9){
+            if(i < 9){
                 int numeralDoCodigo = codigo.charAt(i) - '0';
                 somaDigito1 += numeralDoCodigo * (10 - i);
             }
@@ -45,8 +43,12 @@ public final class VerificadorCPF implements IvalidadorDeCPF{
         somaDigito1 = (somaDigito1 * 10) % 11;
         somaDigito2 = (somaDigito2 * 10) % 11;
 
-        if(somaDigito1 == 10.0 && somaDigito2 == 10.0){
+
+        if(somaDigito1 == 10.0 ){
             somaDigito1 = 0.0;
+        }
+
+        if(somaDigito2 == 10.0 ){
             somaDigito2 = 0.0;
         }
 
@@ -76,21 +78,16 @@ public final class VerificadorCPF implements IvalidadorDeCPF{
 
 
             for (String s : blacklist) {
-                linha = s;
-                if (linha.equals(codigo)) {
+                if (s.equals(codigo)) {
                     return false;
                 }
             }
-
             return true;
 
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
-
             throw new NullPointerException();
         }
-
-        
     }
 
     @Override
@@ -98,11 +95,8 @@ public final class VerificadorCPF implements IvalidadorDeCPF{
         if(codigo.charAt(3) == '.' && codigo.charAt(7) == '.' && codigo.charAt(11) == '-'){
             return true;
         }
-
-        return (codigo.charAt(3) > '0' && codigo.charAt(3) < '9') &&
-                (codigo.charAt(6) > '0' && codigo.charAt(7) < '9') &&
-                (codigo.charAt(9) > '0' && codigo.charAt(9) < '9');
+        return (codigo.charAt(3) >= '0' && codigo.charAt(3) <= '9') &&
+                (codigo.charAt(6) >= '0' && codigo.charAt(7) <= '9') &&
+                (codigo.charAt(9) >= '0' && codigo.charAt(9) <= '9');
     }
-    
 }
-

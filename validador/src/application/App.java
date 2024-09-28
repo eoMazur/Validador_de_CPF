@@ -3,6 +3,7 @@ package application;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -13,10 +14,20 @@ public class App {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         boolean repetir = true;
+
+        int opcao = 0;
+
         while (repetir) {
 
-            System.out.println("1 - Digitar os Cpfs\n2 - Verificar um arquivo de texto\n3 - Sair");
-            int opcao = sc.nextInt();
+            try{
+                System.out.println("1 - Digitar os Cpfs\n2 - Verificar um arquivo de texto\n3 - Sair");
+                opcao = sc.nextInt();
+
+            }
+            catch (InputMismatchException e){
+                System.out.println("Erro: " + e.getMessage());
+                break;
+            }
 
             switch (opcao) {
                 case 1:
@@ -31,7 +42,6 @@ public class App {
                             break;
                         }
                         set.add(cpf);
-
 
                     } while (true);
 
@@ -82,8 +92,6 @@ public class App {
                     System.out.println("Opção Inválida: ");
                     break;
             }
-
-
         }
     }
 }
