@@ -11,24 +11,24 @@ import services.FiltragemCompleta;
 import services.VerificadorCPF;
 
 public class App {
+
     public static void main(String[] args) throws Exception {
+        teste();
+    }
+
+    private static void teste() {
         Scanner sc = new Scanner(System.in);
+        int opcao =3;
         boolean repetir = true;
-
-        int opcao = 0;
-
         while (repetir) {
 
-            try{
+            try {
                 System.out.println("1 - Digitar os Cpfs\n2 - Verificar um arquivo de texto\n3 - Sair");
-                opcao = sc.nextInt();
-
-            }
-            catch (InputMismatchException e){
+                 opcao =  sc.nextInt();
+            } catch (InputMismatchException e) {
                 System.out.println("Erro: " + e.getMessage());
-                break;
+                teste();
             }
-
             switch (opcao) {
                 case 1:
                     sc.nextLine();
@@ -57,6 +57,7 @@ public class App {
                     sc.nextLine();
 
                     System.out.println("Informe o caminho do arquivo para a leitura dos dados: ");
+
                     String caminho = sc.nextLine();
 
                     try (BufferedReader br = new BufferedReader(new FileReader(caminho))) {
@@ -90,6 +91,7 @@ public class App {
 
                 default:
                     System.out.println("Opção Inválida: ");
+                    System.out.println(opcao);
                     break;
             }
         }
