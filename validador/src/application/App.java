@@ -13,10 +13,6 @@ import services.VerificadorCPF;
 public class App {
 
     public static void main(String[] args) throws Exception {
-        teste();
-    }
-
-    private static void teste() {
         Scanner sc = new Scanner(System.in);
         int opcao =3;
         boolean repetir = true;
@@ -24,10 +20,9 @@ public class App {
 
             try {
                 System.out.println("1 - Digitar os Cpfs\n2 - Verificar um arquivo de texto\n3 - Sair");
-                 opcao =  sc.nextInt();
+                opcao =  sc.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Erro: " + e.getMessage());
-                teste();
             }
             switch (opcao) {
                 case 1:
@@ -91,9 +86,9 @@ public class App {
 
                 default:
                     System.out.println("Opção Inválida: ");
-                    System.out.println(opcao);
                     break;
             }
         }
     }
+
 }
