@@ -6,12 +6,12 @@ Este projeto foi desenvolvido como um desafio do programa de bolsas da empresa d
 
 Este repositório contém um programa simples em Java para verificar a validade de números de CPF (Cadastro de Pessoas Físicas). O CPF é um documento de identificação fiscal brasileiro.
 
-Ele possui a classe App que lê os CPFs em um arquivo de texto fornecido pelo usuário, uma classe CPF, uma interface contendo os métodos de verificação e uma classe que implementa os métodos da interface. 
+Ele possui a classe App que lê os CPFs em um arquivo de texto e ou digitados pelo usuario, uma classe CPF, uma interface contendo os métodos de verificação e uma classe que implementa os métodos da interface. 
 
 ## Funcionalidades
 
 - Verificação de CPF: Determina se um número de CPF fornecido é válido ou inválido.
-- Suporte a CPFs formatados ou não formatados.
+- Suporte a CPFs formatados ou não formatados, seguindo a sixtaxe com ou sem os pontos (xxx.xxx.xxx-xx, xxxxxxxxxxx), CPFs com outros simbolos como (/, %, $, *), serão tratados com invalidos mesmos o CPF sendo válido.
 
 ## Pré-requisitos
 
